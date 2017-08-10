@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link href="style.css" rel="stylesheet"/>
+    <title>:: Personal Cash Book ::</title>
+  </head>
+  <body>
+    <!-- navigation -->
+    <h1>:: Personal Cash Book ::</h1>
+    <div class="topnav" id="myTopnav">
+      <a class="active" id="nav-tampil-data" onclick="app.gantiMenu('tampil-data');">Tampil Data</a>
+      <a id="nav-tambah-data" onclick="app.gantiMenu('tambah-data');">Tambah Data</a>
+      <a id="nav-about" onclick="app.gantiMenu('tampil-about');">About</a>
+    </div>
+
+    <!-- form data -->
+    <div id="tambah-data" class="well" style="display:none;">
+      <form id="form-tambah-data">
+        <label>Jenis Kas:</label><br>
+        <select id="jenis1"/>
+          <option value="Masuk">Masuk</option>
+          <option value="Keluar">Keluar</option>
+        </select><br>
+        <label>No.Urut:</label><br>
+        <input type="text" id="urut" name="urut" placeholder="urut" onkeypress="return app.isNumber(event);"/><br>
+        <label>Tanggal:</label><br>
+        <input type="date" id="tanggal" name="tanggal"/><br>
+        <label>Uraian:</label><br>
+        <textarea style="height:80px" id="uraian" name="uraian" placeholder="uraian" /></textarea><br>
+        <label>Jumlah:</label><br>
+        <input type="text" id="jumlah" name="jumlah" placeholder="jumlah" onkeypress="return app.isNumber(event);"/><br>
+        <input type="button" value="Simpan" onclick="app.TambahData();"/>
+        <input type="reset" value="Reset" onclick=""/>
+        <input type="button" value="Cancel" onclick="app.gantiMenu('tampil-data');"/>
+      </form>
+    </div>
+
+    <!-- edit data -->
+    <div id="edit-data" class="well" style="display:none;">
+      <form id="form-edit-data">
+        <label>Jenis Kas:</label><br>
+        <select id="jenis2"/>
+          <option value="Masuk">Masuk</option>
+          <option value="Keluar">Keluar</option>
+        </select><br>
+        <label>No. Urut:</label><br>
+        <input type="text" id="urut2" name="urut" placeholder="urut" onkeypress="return app.isNumber(event);"/><br>
+        <label>Tanggal:</label><br>
+        <input type="date" id="tanggal2" name="tanggal"/><br>
+        <label>Uraian:</label><br>
+        <textarea style="height:80px" id="uraian2" name="uraian" placeholder="uraian" /></textarea><br>
+        <label>Jumlah:</label><br>
+        <input type="text" id="jumlah2" name="jumlah" placeholder="jumlah" onkeypress="return app.isNumber(event);"/><br>
+        <input type="button" id="simpanEdit" value="Simpan"/>
+        <input type="reset" value="Reset" onclick=""/>
+        <input type="button" value="Cancel" onclick="app.gantiMenu('tampil-data');"/>
+      </form>
+    </div>
+
+    <!-- tabel data -->
+    <table>
+      <thead>
+        <tr>
+          <th style="width:8%">No. Urut</th>
+          <th style="width:10%">Tanggal</th>
+          <th style="width:40%">Uraian</th>
+          <th style="width:17%">Jumlah</th>
+          <th colspan="2" style="width:16%">Aksi</th>
+          <th style="width:15%">Jenis Kas</th>
+        </tr>
+      </thead>
+      <tbody id="data">
+        <tr>
+          <td></td>
+          <td></td>
+          <td>tidak ada data..</td>
+          <td id="ratakanan">0,00</td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+      <tbody>
+      <tfoot>
+        <tr>
+          <td id="ratatengah" colspan="3">Total Penerimaan (A)</td>
+          <td class="penerimaan" id="ratakanan">0,00</td>
+        </tr>
+        <tr>
+          <td id="ratatengah" colspan="3">Total Pengeluaran (B)</td>
+          <td class="pengeluaran" id="ratakanan">0,00</td>
+        </tr>
+        <tr>
+          <td id="ratatengah" colspan="3">Saldo (C = A + B)</td>
+          <td class="saldo" id="ratakanan">0,00</td>
+        </tr>
+      </tfoot>
+    </table>
+
+    <!-- about -->
+    <div id="about" style="display:none;">
+      <div id="box">
+        Personal Cash Book adalah sebuah aplikasi alat bantu yang digunakan
+        untuk membuat catatan penerimaan maupun pengeluaran kas pribadi.<br><br>
+        Aplikasi ini tidak menggunkan database sebagai media penyimpanan, sehingga
+        aplikasi ini hanya bisa digunakan pada saat browser tampil :D (materi belum masuk kedatabase :D).<br><br>
+        Pada saat menggunakan aplikasi ini diharapkan tidak merefresh tampilan! supaya data
+        yang sudah disimpan tidak hilang.<br><br>
+        Selamat mencoba... <br><br>
+        © 2017 Munawir Ali
+      </div>
+    </div>
+    <script src="personal-cash-book.js"></script>
+  </body>
+</html>
